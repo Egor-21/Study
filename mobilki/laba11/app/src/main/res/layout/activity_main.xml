@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/bCallPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textColor="#FFFFFF"
+        android:text="Позвонить" />
+
+    <Button
+        android:id="@+id/opencamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bCallPhone"
+        android:layout_alignEnd="@id/bCallPhone"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="13dp"
+        android:text="Камера"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/opencontact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/opencamera"
+        android:layout_alignEnd="@id/opencamera"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="-9dp"
+        android:text="Контакты"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/bCallActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вторая активии"
+        android:layout_below="@id/opencontact"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#2196F3"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"/>
+
+</RelativeLayout>

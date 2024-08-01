@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Ресурсы</string>
+    <string name="text">Привет, мир!</string>
+    <string name="red">Красный</string>
+    <string name="green">Зелёный</string>
+    <string name="blue">Синий</string>
+    <string name="color">Цвет</string>
+    <string name="exit">Выход</string>
+    <string name="back1">Фон1</string>
+    <string name="back2">Фон2</string>
+    <string name="background">Фон</string>
+    <string name="font">Шрифт</string>
+    <string name="normal">Обычный</string>
+    <string name="bold">Жирный</string>
+</resources>

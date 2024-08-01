@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовый фронтенд</title>
+</head>
+<body>
+    <h1>Регистрация</h1>
+    <form id="registrationForm">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="nickname">Никнейм:</label><br>
+        <input type="text" id="nickname" name="nickname" required><br>
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <h1>Список тестов</h1>
+    <ul id="testList"></ul>
+
+    <script>
+        const apiUrl = 'http://127.0.0.1:8000/api/v1/'; // Изменено на локальный адрес сервера
+
+        // Функция для выполнения POST-запроса к API
+        async function postData(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            return await response.json();
+        }
+
+        // Обработчик события для регистрации пользователя
+        document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const registrationData = {
+                email: formData.get('email'),
+                nickname: formData.get('nickname'),
+                password: formData.get('password')
+            };
+            const response = await postData('${apiUrl}/register/', registrationData);
+            console.log(response);
+            // Очистить форму после регистрации
+            this.reset();
+        });
+
+        // Загрузка списка тестов
+        async function loadTestList() {
+            const response = await fetch('${apiUrl}/tests/');
+            const testData = await response.json();
+            const testListElement = document.getElementById('testList');
+            testListElement.innerHTML = '';
+            testData.forEach(test => {
+                const listItem = document.createElement('li');
+                listItem.textContent = test.title;
+                listItem.addEventListener('click', () => startTest(test.id));
+                testListElement.appendChild(listItem);
+            });
+        }
+
+        // Начало прохождения теста
+        async function startTest(testId) {
+            const response = await fetch('${apiUrl}/tests/${testId}/');
+            const testDetails = await response.json();
+            console.log(testDetails);
+            // Здесь можно добавить код для отображения деталей теста и формы для отправки ответов
+        }
+
+        // Загрузка списка тестов после загрузки страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTestList();
+        });
+    </script>
+</body>
+</html>

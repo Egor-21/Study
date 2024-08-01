@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">lab8</string>
+    <string name="metallica">Металлика</string>
+    <string name="nirvana">Нирвана</string>
+    <string name="shut">Король и Шут</string>
+    <string name="choose_the_picture">Выберите группу</string>
+
+</resources>
